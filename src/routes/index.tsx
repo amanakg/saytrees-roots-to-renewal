@@ -227,7 +227,7 @@ function GroundWork() {
 
 function Index() {
   return (
-    <main className="bg-sky relative min-h-screen overflow-hidden">
+    <main className="bg-sky relative flex min-h-screen flex-col overflow-hidden">
       <div className="relative z-10 px-4 pt-6 sm:px-8 lg:pt-10">
         <SignInBar />
         <FocusAreas />
@@ -236,12 +236,13 @@ function Index() {
           Need access? Contact your SayTrees coordinator.
         </p>
       </div>
+      <div className="flex-1" aria-hidden />
       <img
         src={groundScene}
         alt="Villagers planting saplings beside a restored pond, a biogas plant, a grazing cow, a farmer training session and a solar-powered sensor, and a SayTrees field worker checking a tablet"
         width={1920}
         height={800}
-        className="scene-fade relative -mt-6 block w-full object-cover sm:-mt-16 lg:-mt-28"
+        className="scene-fade relative -mt-2 block w-full object-cover sm:-mt-8 xl:-mt-24"
       />
     </main>
   );
