@@ -115,6 +115,7 @@ function Studio() {
                   return;
                 }
                 setImage({ url: URL.createObjectURL(f), blob: f });
+                return;
               }}
             />
           </div>
