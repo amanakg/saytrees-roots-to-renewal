@@ -148,7 +148,7 @@ function SignInBar() {
 
 function FocusAreas() {
   return (
-    <section aria-labelledby="focus-heading" className="animate-rise mx-auto mt-12 max-w-6xl [animation-delay:120ms]">
+    <section aria-labelledby="focus-heading" className="animate-rise mx-auto mt-12 max-w-6xl [animation-delay:120ms] lg:mt-[4vh]">
       <div className="flex items-center justify-center gap-6">
         <span className="rule-fade hidden w-32 sm:block" />
         <h2 id="focus-heading" className="eyebrow">
@@ -156,7 +156,7 @@ function FocusAreas() {
         </h2>
         <span className="rule-fade hidden w-32 rotate-180 sm:block" />
       </div>
-      <ul className="mt-8 grid grid-cols-2 gap-y-6 sm:grid-cols-3 lg:flex lg:items-center lg:justify-center">
+      <ul className="mt-8 grid grid-cols-2 gap-y-6 sm:grid-cols-3 lg:mt-[2.5vh] lg:flex lg:items-center lg:justify-center">
         {focusAreas.map(({ label, icon: Icon }, i) => (
           <li
             key={label}
@@ -179,7 +179,7 @@ function GroundWork() {
   return (
     <section
       aria-labelledby="ground-heading"
-      className="animate-rise mx-auto mt-16 grid max-w-7xl items-center gap-8 [animation-delay:240ms] lg:grid-cols-[1fr_auto] xl:gap-10"
+      className="animate-rise mx-auto mt-16 grid max-w-7xl items-center gap-8 [animation-delay:240ms] lg:mt-[4vh] lg:grid-cols-[1fr_auto] xl:gap-10"
     >
       <div>
         <div className="flex items-center gap-6">
@@ -188,7 +188,7 @@ function GroundWork() {
           </h2>
           <span className="h-px flex-1 bg-primary/60" />
         </div>
-        <ol className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-0">
+        <ol className="mt-8 grid gap-8 sm:grid-cols-2 lg:mt-[2.5vh] lg:grid-cols-5 lg:gap-0">
           {groundWork.map(({ title, text, icon: Icon }, i) => (
             <li
               key={title}
@@ -212,7 +212,7 @@ function GroundWork() {
           ))}
         </ol>
       </div>
-      <div className="mx-auto w-64 sm:w-72 lg:w-56 xl:w-80 2xl:w-96">
+      <div className="mx-auto w-64 sm:w-72 lg:w-[min(14rem,30vh)] xl:w-[min(20rem,32vh)] 2xl:w-[min(24rem,34vh)]">
         <img
           src={warmingRing.url}
           alt="Tree ring coloured with warming stripes, from blue at the centre to deep red at the edge"
@@ -227,8 +227,8 @@ function GroundWork() {
 
 function Index() {
   return (
-    <main className="bg-sky relative flex min-h-screen flex-col overflow-hidden">
-      <div className="relative z-10 px-4 pt-6 sm:px-8 lg:pt-10">
+    <main className="bg-sky relative flex min-h-dvh flex-col overflow-hidden lg:h-dvh lg:min-h-0">
+      <div className="relative z-10 px-4 pt-6 sm:px-8 lg:pt-[3vh]">
         <SignInBar />
         <FocusAreas />
         <GroundWork />
@@ -236,13 +236,13 @@ function Index() {
           Need access? Contact your SayTrees coordinator.
         </p>
       </div>
-      <div className="flex-1" aria-hidden />
+      <div className="flex-1 lg:hidden" aria-hidden />
       <img
         src={groundScene}
         alt="Villagers planting saplings beside a restored pond, a biogas plant, a grazing cow, a farmer training session and a solar-powered sensor, and a SayTrees field worker checking a tablet"
         width={1920}
         height={800}
-        className="scene-fade relative -mt-2 block w-full object-cover sm:-mt-8 xl:-mt-24"
+        className="scene-fade relative -mt-2 block w-full object-cover sm:-mt-8 lg:-mt-[5vh] lg:h-auto lg:min-h-[26vh] lg:flex-1 lg:object-bottom"
       />
     </main>
   );
