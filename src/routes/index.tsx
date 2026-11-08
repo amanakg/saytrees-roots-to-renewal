@@ -20,7 +20,7 @@ import {
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-import groundScene from "@/assets/ground-scene.jpg";
+import groundScene from "@/assets/ground-scene-v2.jpg";
 import warmingRing from "@/assets/warming-ring.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -234,7 +234,7 @@ function Index() {
       </div>
       <img
         src={groundScene}
-        alt="Villagers planting saplings beside a restored pond, a biogas plant, a grazing cow, a farmer training session and a solar-powered sensor"
+        alt="Villagers planting saplings beside a restored pond, a biogas plant, a grazing cow, a farmer training session and a solar-powered sensor, and a SayTrees field worker checking a tablet"
         width={1920}
         height={800}
         className="scene-fade relative -mt-6 block w-full object-cover sm:-mt-16 lg:-mt-28"
