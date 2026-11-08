@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import { loadSceneVideo } from "@/lib/scene-store";
 import {
   ArrowRight,
   Droplet,
@@ -237,13 +238,33 @@ function Index() {
         </p>
       </div>
       <div className="flex-1 lg:hidden" aria-hidden />
+      <SceneMedia />
+    </main>
+  );
+}
+
+function SceneMedia() {
+  const [url, setUrl] = useState<string | null>(null);
+  useEffect(() => {
+    let u: string | null = null;
+    loadSceneVideo()
+      .then((b) => { if (b) { u = URL.createObjectURL(b); setUrl(u); } })
+      .catch(() => {});
+    return () => { if (u) URL.revokeObjectURL(u); };
+  }, []);
+  const cls =
+    "scene-fade relative -mt-2 block w-full object-cover sm:-mt-8 lg:-mt-[5vh] lg:h-auto lg:min-h-[26vh] lg:flex-1 lg:object-bottom";
+  if (url)
+    return <video src={url} poster={groundScene} autoPlay loop muted playsInline className={cls} aria-label="Animated SayTrees village scene" />;
+  return (
+    <>
       <img
         src={groundScene}
         alt="Villagers planting saplings beside a restored pond, a biogas plant, a grazing cow, a farmer training session and a solar-powered sensor, and a SayTrees field worker checking a tablet"
         width={1920}
         height={800}
-        className="scene-fade relative -mt-2 block w-full object-cover sm:-mt-8 lg:-mt-[5vh] lg:h-auto lg:min-h-[26vh] lg:flex-1 lg:object-bottom"
+        className={cls}
       />
-    </main>
+    </>
   );
 }
