@@ -110,7 +110,10 @@ function Studio() {
               onChange={(e) => {
                 const f = e.target.files?.[0];
                 if (!f) return;
-                if (f.size > 10_000_000) return toast.error("Please pick an image under 10 MB.");
+                if (f.size > 10_000_000) {
+                  toast.error("Please pick an image under 10 MB.");
+                  return;
+                }
                 setImage({ url: URL.createObjectURL(f), blob: f });
               }}
             />
