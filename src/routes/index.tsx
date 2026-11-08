@@ -20,7 +20,7 @@ import {
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-import groundScene from "@/assets/ground-scene.jpg";
+import groundScene from "@/assets/ground-scene-v2.jpg";
 import warmingRing from "@/assets/warming-ring.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -47,7 +47,7 @@ export const Route = createFileRoute("/")({
 const focusAreas: { label: string; icon: LucideIcon }[] = [
   { label: "Agroforestry", icon: Leaf },
   { label: "Forestry", icon: TreePine },
-  { label: "Water Conservation", icon: Droplet },
+  { label: "Water\nConservation", icon: Droplet },
   { label: "Bio Gas", icon: Flame },
   { label: "Solar", icon: Sun },
   { label: "Mangroves", icon: TreeDeciduous },
@@ -73,8 +73,8 @@ function Logo() {
           />
         </span>
       </span>
-      <span className="hidden h-9 w-px bg-foreground/70 sm:block" />
-      <span className="hidden font-display text-[0.7rem] font-semibold leading-tight tracking-[0.2em] text-foreground sm:block">
+      <span className="hidden h-9 w-px bg-foreground/70 sm:block lg:hidden xl:block" />
+      <span className="hidden whitespace-nowrap font-display text-[0.7rem] font-semibold leading-tight tracking-[0.2em] text-foreground sm:block lg:hidden xl:block">
         BUILDING CLIMATE
         <br />
         RESILIENT COMMUNITIES
@@ -103,12 +103,12 @@ function SignInBar() {
         onSubmit={handleSubmit}
         className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center lg:flex-nowrap"
       >
-        <label className="relative sm:w-56">
+        <label className="relative sm:w-56 lg:w-52 xl:w-56">
           <span className="sr-only">Username</span>
           <User className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <input name="username" autoComplete="username" placeholder="Username" required className={fieldClass} />
         </label>
-        <label className="relative sm:w-56">
+        <label className="relative sm:w-56 lg:w-52 xl:w-56">
           <span className="sr-only">Password</span>
           <Lock className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <input
@@ -137,7 +137,7 @@ function SignInBar() {
             e.preventDefault();
             toast("Contact your SayTrees coordinator to reset your password.");
           }}
-          className="text-center font-display text-sm font-semibold text-primary-deep hover:text-primary lg:ml-3"
+          className="whitespace-nowrap text-center font-display text-sm font-semibold text-primary-deep hover:text-primary lg:ml-2"
         >
           Forgot password?
         </a>
@@ -160,12 +160,12 @@ function FocusAreas() {
         {focusAreas.map(({ label, icon: Icon }, i) => (
           <li
             key={label}
-            className={`flex items-center gap-3 px-6 ${i > 0 ? "lg:border-l lg:border-foreground/20" : ""}`}
+            className={`flex items-center gap-3 px-4 xl:px-6 ${i > 0 ? "lg:border-l lg:border-foreground/20" : ""}`}
           >
             <span className="grid size-11 shrink-0 place-items-center rounded-full bg-secondary text-primary">
               <Icon className="size-6" strokeWidth={1.6} />
             </span>
-            <span className="max-w-28 font-display text-base font-medium leading-tight text-foreground">
+            <span className="whitespace-pre-line font-display text-base font-medium leading-tight text-foreground">
               {label}
             </span>
           </li>
@@ -179,7 +179,7 @@ function GroundWork() {
   return (
     <section
       aria-labelledby="ground-heading"
-      className="animate-rise mx-auto mt-16 grid max-w-7xl items-center gap-10 [animation-delay:240ms] lg:grid-cols-[1fr_auto]"
+      className="animate-rise mx-auto mt-16 grid max-w-7xl items-center gap-8 [animation-delay:240ms] lg:grid-cols-[1fr_auto] xl:gap-10"
     >
       <div>
         <div className="flex items-center gap-6">
@@ -192,23 +192,27 @@ function GroundWork() {
           {groundWork.map(({ title, text, icon: Icon }, i) => (
             <li
               key={title}
-              className={`relative lg:px-5 ${i > 0 ? "lg:border-l lg:border-primary/25" : "lg:pl-0"}`}
+              className={`relative lg:px-3 xl:px-5 ${i > 0 ? "lg:border-l lg:border-primary/25" : "lg:pl-0"}`}
             >
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2 xl:gap-3">
                 <span className="grid size-7 shrink-0 place-items-center rounded-full border border-primary/40 bg-card font-display text-sm font-bold text-primary-deep shadow-sm">
                   {i + 1}
                 </span>
-                <span className="mt-2 grid size-16 place-items-center rounded-full bg-secondary text-primary">
-                  <Icon className="size-8" strokeWidth={1.5} />
+                <span className="mt-2 grid size-14 shrink-0 place-items-center rounded-full bg-secondary text-primary xl:size-16">
+                  <Icon className="size-7 xl:size-8" strokeWidth={1.5} />
                 </span>
               </div>
-              <h3 className="mt-4 text-xl font-bold leading-tight text-primary-deep">{title}</h3>
-              <p className="mt-2 text-[0.95rem] leading-snug text-muted-foreground">{text}</p>
+              <h3 className="mt-4 text-xl font-bold leading-tight text-primary-deep lg:text-[1.05rem] xl:text-xl">
+                {title}
+              </h3>
+              <p className="mt-2 text-[0.95rem] leading-snug text-muted-foreground lg:text-sm xl:text-[0.95rem]">
+                {text}
+              </p>
             </li>
           ))}
         </ol>
       </div>
-      <div className="mx-auto w-64 sm:w-72 lg:w-80 xl:w-96">
+      <div className="mx-auto w-64 sm:w-72 lg:w-56 xl:w-80 2xl:w-96">
         <img
           src={warmingRing.url}
           alt="Tree ring coloured with warming stripes, from blue at the centre to deep red at the edge"
@@ -223,7 +227,7 @@ function GroundWork() {
 
 function Index() {
   return (
-    <main className="bg-sky relative min-h-screen overflow-hidden">
+    <main className="bg-sky relative flex min-h-screen flex-col overflow-hidden">
       <div className="relative z-10 px-4 pt-6 sm:px-8 lg:pt-10">
         <SignInBar />
         <FocusAreas />
@@ -232,12 +236,13 @@ function Index() {
           Need access? Contact your SayTrees coordinator.
         </p>
       </div>
+      <div className="flex-1" aria-hidden />
       <img
         src={groundScene}
-        alt="Villagers planting saplings beside a restored pond, a biogas plant, a grazing cow, a farmer training session and a solar-powered sensor"
+        alt="Villagers planting saplings beside a restored pond, a biogas plant, a grazing cow, a farmer training session and a solar-powered sensor, and a SayTrees field worker checking a tablet"
         width={1920}
         height={800}
-        className="scene-fade relative -mt-6 block w-full object-cover sm:-mt-16 lg:-mt-28"
+        className="scene-fade relative -mt-2 block w-full object-cover sm:-mt-8 xl:-mt-24"
       />
     </main>
   );
