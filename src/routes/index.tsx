@@ -47,7 +47,7 @@ export const Route = createFileRoute("/")({
 const focusAreas: { label: string; icon: LucideIcon }[] = [
   { label: "Agroforestry", icon: Leaf },
   { label: "Forestry", icon: TreePine },
-  { label: "Water Conservation", icon: Droplet },
+  { label: "Water\nConservation", icon: Droplet },
   { label: "Bio Gas", icon: Flame },
   { label: "Solar", icon: Sun },
   { label: "Mangroves", icon: TreeDeciduous },
@@ -165,7 +165,7 @@ function FocusAreas() {
             <span className="grid size-11 shrink-0 place-items-center rounded-full bg-secondary text-primary">
               <Icon className="size-6" strokeWidth={1.6} />
             </span>
-            <span className="max-w-32 font-display text-base font-medium leading-tight text-foreground lg:whitespace-nowrap [&:has(br)]:whitespace-normal">
+            <span className="whitespace-pre-line font-display text-base font-medium leading-tight text-foreground">
               {label}
             </span>
           </li>
